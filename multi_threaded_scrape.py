@@ -6,8 +6,9 @@ import pprint
 import pandas as pd
 import matplotlib.pyplot as plt  
 import threading
+import sys 
 
-YEAR = 2010
+YEAR = 2005
 NUM_DRIVERS = 6
 
 allRaces = []
@@ -115,6 +116,14 @@ def generateGraph(df, numDrivers, year):
     plt.show()
 
 def main():
+
+    args = sys.argv 
+    if (len(args) == 3):
+        YEAR = args[1]
+        NUM_DRIVERS = int(args[2])
+    elif (len(args) == 2):
+        YEAR = args[1]
+
     global allRaces, allDrivers, allDriversLinks
     getAllRaceNames(YEAR)
     getAllDriverNames(YEAR)
